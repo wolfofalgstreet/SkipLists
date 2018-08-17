@@ -232,6 +232,60 @@ public class SkipLists {
         }
     }
     
+    // PRINTS ALL VALUES IN CURRENT SKIPLIST //
+    public void printList(skipList list) {
+        Node current = list.head;
+        
+        // Level 1 contains all values in list, level down
+        while (current.down != null) {
+            current = current.down;
+        }
+        
+        // At level 1, traverse level and print each node stack
+        System.out.println("the current Skip List is shown below:");
+        System.out.println("---infinity");
+        while (current.value != list.tail.value) {
+            current = current.right;
+            if (current.value != list.posInf) { 
+                printStack(current);
+            }
+        }
+        System.out.println("+++infinity");
+        System.out.println("---End of Skip List---");
+    }
+    
+    // HELPS PRINT THE SKIPLIST, PRINT ONLY ONE STACK //
+    public void printStack(Node stackBottom) {
+        System.out.print(" " + stackBottom.value + "; ");
+        if (stackBottom.up == null) {
+            System.out.print("\n");
+        }
+        while (stackBottom.up != null) {
+            stackBottom = stackBottom.up;
+            System.out.print(" " + stackBottom.value + "; ");
+            if (stackBottom.up == null) {
+                System.out.print("\n");
+                break;
+            }
+        }
+    }
+
+    // DELETES VALUE FROM ALL LEVELS IF IT EXISTS //
+    public void delete(skipList list, int key) {
+        Node current = search(list, key);
+        if (current.value == key) {
+            while (current != null) {
+                current.left.right = current.right;
+                current.right.left = current.left;
+                current = current.up;
+            }
+            System.out.println(key + " deleted");
+            list.size--;
+        } else {
+            System.out.println(key + " integer not found - delete not successful");
+        }
+    }
+    
 }
 
 
