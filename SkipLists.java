@@ -180,6 +180,58 @@ public class SkipLists {
     }
     
     
+    // INSERTS NEW VALUE INTO SKIPLIST, DISCARDS DUPLICATE ATTEMPTS //
+    public void insert(skipList list, int value, Random randomizer) {
+        Node newEntry = new Node(value);
+        Node current = search(list, value);
+        int stackHeight;
+        
+        // Already in skipList, discard. Add otherwise
+        if (current.value != value) {
+            
+            newEntry.left = current;
+            newEntry.right = current.right;
+            current.right = newEntry;
+            newEntry.right.left = newEntry;
+            
+            // Promote node randomly
+            stackHeight = 1; 
+            while ((randomizer.nextInt() % 2) == 1) {
+
+                // Add level if necessary
+                if (stackHeight >= list.maxLevel) {
+                    list.addLevel();
+                }
+                
+                // From current position, climb up
+                while (current.up == null) {
+                    current = current.left;
+                }
+                current = current.up;
+                
+                // New level Linkeage 
+                Node levelUp = new Node(value);
+                levelUp.left = current;
+                levelUp.right = current.right;
+                current.right.left = levelUp;
+                current.right = levelUp;
+                levelUp.down = newEntry;
+                newEntry.up = levelUp;
+                
+                // Link in case value gets promoted again
+                newEntry = levelUp;
+                
+                stackHeight++;
+            }
+            
+            // Update logic markers
+            list.size++;
+            if (stackHeight > list.maxLevel) {
+                list.maxLevel = stackHeight;
+            }
+        }
+    }
+    
 }
 
 
