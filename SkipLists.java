@@ -15,12 +15,15 @@
     import java.util.Random;
     import java.lang.Math;
     
+
+// -------------------------------------- //
+// Implememtns all necessary methods for  // 
+// insert, search, delete, print          //
 public class SkipLists {
 
     public static void main(String[] args) {
         
-        
-        // Terminal Input Setup
+        // Check there is more than one command line argument
         if (args.length > 0) {
             
             // Random number seed
@@ -32,9 +35,10 @@ public class SkipLists {
             if (args.length == 2) {
                 epoch = 1;
             }
+            
+        // Creating skiplist and reading input file 
         SkipLists mClass = new SkipLists();
         skipList list = new SkipLists().new skipList();
-            
         mClass.readFile(fileName, list, epoch);
         
         } else {
@@ -43,7 +47,9 @@ public class SkipLists {
         
     }
     
-    // ENTRY NODE //
+    
+    // ---------------------------------------- //
+    // Node class used for bulding the skiplist //
     public class Node {
         
         public String key; 
@@ -65,7 +71,9 @@ public class SkipLists {
     }
     
     
-    // SKIPLIST //
+    // ------------------------------------------------------- //
+    // Class creates default skiplist, with infinity endpoints //
+    // and functionality for adding levels                     //
     public class skipList {
         public long posInf = 100000000;
         public long negInf = -100000000;
@@ -110,7 +118,8 @@ public class SkipLists {
  
     }
     
-    // READS INPUT FILE AND EXECUTES COMMANDS //
+    // ------------------------------------------------- //
+    // Reads input file and executes commands one by one //
     public void readFile(File fileName, skipList list, int epoch) {
         
         try {
@@ -132,6 +141,7 @@ public class SkipLists {
                 String line = scan.nextLine();
                 String[] command = line.split(" ");
                 
+                // Execute commands
                 switch(command[0]) {
                     case "i":   // Insert to SkipList
                         insert(list, Integer.parseInt(command[1]), randomizer);
@@ -158,17 +168,19 @@ public class SkipLists {
     }
     
     
-    
-    // FINDS THE NODE WITH VALUE <= KEY AT LOWEST LEVEL //
+    // ---------------------------------------------------- //
+    // Finds the node with the value <= key at lowest level //
     public Node search(skipList list, int key) {
         Node x = list.head;
         
         // Traverse Levels, top to bottom
         for (int y = list.maxLevel; y > 0; y--) {
+            
             // Traverse Level
             while (x.right.value != list.posInf && x.right.value <= key) {
                 x = x.right;
             }
+            
             // Attempt to go down the levels
             if (x.down != null) {
                 x = x.down;
@@ -180,8 +192,10 @@ public class SkipLists {
     }
     
     
-    // INSERTS NEW VALUE INTO SKIPLIST, DISCARDS DUPLICATE ATTEMPTS //
+    // -------------------------------------------------------------------- //
+    // Inserts new value into skiplist, will discard any duplicate attempts //
     public void insert(skipList list, int value, Random randomizer) {
+        
         Node newEntry = new Node(value);
         Node current = search(list, value);
         int stackHeight;
@@ -232,7 +246,9 @@ public class SkipLists {
         }
     }
     
-    // PRINTS ALL VALUES IN CURRENT SKIPLIST //
+    
+    // ------------------------------------- //
+    // Prints all vaules in current skiplist //
     public void printList(skipList list) {
         Node current = list.head;
         
@@ -254,7 +270,9 @@ public class SkipLists {
         System.out.println("---End of Skip List---");
     }
     
-    // HELPS PRINT THE SKIPLIST, PRINT ONLY ONE STACK //
+    
+    // ---------------------------------------------- //
+    // Helps print the skiplist, print only one stack //
     public void printStack(Node stackBottom) {
         System.out.print(" " + stackBottom.value + "; ");
         if (stackBottom.up == null) {
@@ -270,7 +288,8 @@ public class SkipLists {
         }
     }
 
-    // DELETES VALUE FROM ALL LEVELS IF IT EXISTS //
+    // -------------------------------------------//
+    // Deletes value from all levels if it exists //
     public void delete(skipList list, int key) {
         Node current = search(list, key);
         if (current.value == key) {
