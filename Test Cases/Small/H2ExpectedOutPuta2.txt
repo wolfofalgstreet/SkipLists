@@ -1,0 +1,31 @@
+For the input file named H2in-a2.txt
+With the RNG unseeded,
+the current Skip List is shown below:
+---infinity
+ 10;  10; 
+ 13; 
+ 16; 
+ 20; 
+ 23; 
+ 27;  27; 
+ 30; 
+ 33; 
+ 34; 
+ 37;  37; 
+ 39;  39; 
+ 41; 
+ 42; 
+ 44; 
+ 48; 
+ 51;  51;  51;  51; 
+ 55; 
+ 58; 
+ 62; 
+ 65; 
+ 69; 
+ 72; 
+ 76;  76;  76; 
+ 89; 
+ 99; 
++++infinity
+---End of Skip List---

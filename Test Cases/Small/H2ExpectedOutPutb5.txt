@@ -1,0 +1,65 @@
+For the input file named H2in-b5.txt
+With the RNG unseeded,
+the current Skip List is shown below:
+---infinity
+ 145;  145;  145; 
+ 152;  152;  152; 
+ 230; 
+ 235; 
+ 252; 
+ 358;  358; 
+ 371; 
+ 376; 
+ 382;  382; 
+ 418; 
+ 430; 
+ 453; 
+ 459; 
+ 468; 
+ 512;  512; 
+ 518; 
+ 542; 
+ 592; 
+ 594;  594; 
+ 595; 
+ 596; 
+ 752; 
+ 753; 
+ 827; 
+ 889; 
+ 966;  966;  966;  966; 
+ 990; 
++++infinity
+---End of Skip List---
+889 deleted
+999 integer not found - delete not successful
+the current Skip List is shown below:
+---infinity
+ 145;  145;  145; 
+ 152;  152;  152; 
+ 230; 
+ 235; 
+ 252; 
+ 358;  358; 
+ 371; 
+ 376; 
+ 382;  382; 
+ 418; 
+ 430; 
+ 453; 
+ 459; 
+ 468; 
+ 512;  512; 
+ 518; 
+ 542; 
+ 592; 
+ 594;  594; 
+ 595; 
+ 596; 
+ 752; 
+ 753; 
+ 827; 
+ 966;  966;  966;  966; 
+ 990; 
++++infinity
+---End of Skip List---

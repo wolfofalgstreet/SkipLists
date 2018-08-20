@@ -1,0 +1,32 @@
+For the input file named H2in-b6.txt
+With the RNG unseeded,
+59 deleted
+40 found
+the current Skip List is shown below:
+---infinity
+ 10;  10; 
+ 15; 
+ 17; 
+ 23; 
+ 25;  25; 
+ 31; 
+ 32;  32; 
+ 39; 
+ 40; 
+ 44; 
+ 48; 
+ 50; 
+ 58; 
+ 60;  60;  60;  60; 
+ 63; 
+ 71; 
+ 73; 
+ 84;  84;  84; 
+ 87; 
+ 88; 
+ 94; 
+ 96; 
+ 97;  97; 
+ 99; 
++++infinity
+---End of Skip List---

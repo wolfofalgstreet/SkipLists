@@ -1,0 +1,33 @@
+For the input file named H2in-b7.txt
+With the RNG unseeded,
+866 found
+639 NOT FOUND
+the current Skip List is shown below:
+---infinity
+ 157; 
+ 161; 
+ 242; 
+ 249; 
+ 266; 
+ 320; 
+ 343; 
+ 384;  384;  384;  384; 
+ 407;  407; 
+ 455; 
+ 461;  461;  461; 
+ 464; 
+ 537; 
+ 568; 
+ 638; 
+ 672; 
+ 807; 
+ 822;  822; 
+ 838; 
+ 866; 
+ 879;  879; 
+ 946; 
+ 965;  965; 
+ 976; 
+ 998; 
++++infinity
+---End of Skip List---
