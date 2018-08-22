@@ -142,7 +142,7 @@ the current element is equal to the target, it has been found. If the current el
 than the target, or the search reaches the end of the linked list, the procedure is repeated after
 returning to the previous element and dropping down vertically to the next lower list.2
 ([See
-also Pugh’s paper](LINK))
+also Pugh’s paper](https://github.com/VegaIsaias/SkipLists/blob/master/pugh90b-skipList.pdf))
 Upon completion of the search for the target integer, the following messages shall be
 output.
 
