@@ -5,7 +5,7 @@
 Build a skip list data structure to support the traversal, searching, addition, and deletion of
 integers from a skip list. This implementation will support building a skip list to support
 some number of occurrences of integers in the range of 1 to 1000. The objective of this
-assignment requires the reading of an input file which contains commands and data to build,
+program requires the reading of an input file which contains commands and data to build,
 search, modify, and print a skip list containing integers.
 
 ## 2. Requirements
@@ -75,13 +75,123 @@ sequence of random numbers, therebey streamlining troubleshooting and testing.
 
 ### 2.3 Execution Commands
 
-**Insert**
+#### Insert
 
-The insert command uses the single character i as the command token. The command token
+---
+
+The insert command uses the single character `i` as the command token. The command token
 will be followed by a single space, then a single integer. This integer will then be inserted
 into the skip list. Note that a skip list requires that data be inserted into the skip list in
 ascending order.
 
+1. Insertion of the lowest rank integer requires that this integer becomes the first element
+in the skip list after the −∞ or equivalent sentinel.
+2. Insertion of an integer requires a probabilistic mechanism to decide if this integer will
+also be on the next higher level. The method chosen is flipping a fair
+coin. The flipping of a fair coin can be emulated using the Random object in Java to
+generate a “random number” then taking that number modulo 2 to generate a 1 or
+2
+0. The promotion method used to generate the test cases used a 1 to represent heads
+and correspondingly a 0 to represent tails. Each flip of the coin that produces a heads
+causes that integer to be promoted and appropriately linked into the skip list. This
+process is terminated when a tails has been “flipped”.
+3. In the event that a new skip level has been “flipped” the new level will be added
+accordingly.1 This process would then connect to the beginning and ending sentinels
+(−∞ and +∞) appropriately.
+4. Insertion of the highest rank integer requires that this integer becomes the element in
+the skip list before the +∞ or equivalent sentinel.
+5. In the event that an integer is being inserted that already exists, it is acceptable to
+discard the integer without notice and continue to process the input file. (This will
+prevent duplicate entries in the skip list.)
+
+*Input* - `i xx` where xx is an integer between 1 and 1000.
+
+*Outputs* - N/A
+
+#### Delete
+
+---
+
+The delete command uses the single character `d` as the command token. The command
+token will be followed by a single integer. In order to successfully delete an entry from the
+skip list, the intger must be found.
+In the event that the integer cannot be found, the program will issue the error message
+"xx integer not found - delete not successful", where xx is the specified integer. The
+program will recover gracefully to continue to accept commands.
+Once the integer is found, it will be deleted from the base level, and any additional
+level(s) that the integer had been promoted to upon insertion.
+
+*Input* - `d xx` where xx is an integer between 1 and 1000.
+
+*Outputs* 
+* (Success) "xx deleted", where xx is the integer being deleted
+* (Failure) "xx integer not found - delete not successful", where xx is the integer being deleted
+was not found
+
+
+#### Search
+
+---
+
+The search command uses the single character `s` as the command token. The command
+token will be followed by a single space, then the integer that is to be searched
+The search command will take advantage of the skip list structure and implement the
+following algorithm. A search for a target element begins at the head element in the top list,
+and proceeds horizontally until the current element is greater than or equal to the target. If
+the current element is equal to the target, it has been found. If the current element is greater
+than the target, or the search reaches the end of the linked list, the procedure is repeated after
+returning to the previous element and dropping down vertically to the next lower list.2
+([See
+also Pugh’s paper](LINK))
+Upon completion of the search for the target integer, the following messages shall be
+output.
+
+*Input* - `s xx` where xx is an integer between 1 and 1000.
+
+*Outputs*
+* (Success) "xx found", where xx is the integer being searched for
+* (Failure) "xx NOT FOUND", where xx is the integer being searched for and was not found
+
+#### Print
+
+---
+
+The print command uses the single character `p` as the command token. This command will
+invoke the *printAll* function described in detail below.
+This command is critical for verification of all the commands specified above.
+
+*Input* - p
+
+*Outputs*
+
+```
+$java Hw02 bogusTestFile.txt
+For the input file named bogusTestFile.txt
+With the RNG unseeded,
+the current Skip List is shown below:
+
+10; 10; 10; 10; 10; 10; 10
+20
+30; 30; 30
+40
+50; 50; 50
+60
+70; 70; 70; 70; 70; 70; 70
+---End of Skip List---
+```
+
+## 3. Test Files
+
+
+| Input File| Description |     Expected Output File              |
+| ------ |:------:| ---------------------------------------------:|
+| H.2in-a1.txt  | 10 numbers input, with a print command | H2ExpectedOutputa1.txt |
+| H.2in-a2.txt  | 25 numbers input, with a print command | H2ExpectedOutputa2.txt |
+| H.2in-a3.txt  | 50 numners input, with a print command | H2ExpectedOutputa3.txt |
+| H.2in-a4.txt  | 100 numbers input, with a print command | H2ExpectedOutputa4.txt |
+| H.2in-a5.txt  | 25 numbers input, with print & valid/invalid delete commands | H2ExpectedOutputa5.txt |
+| H.2in-a6.txt  | 25 numbers input, with print, valid delete, valid search, duplicate integer inserts & print commands | H2ExpectedOutputa6.txt |
+| H.2in-a7.txt  | 25 numbers input, with print & valid/invalid search commands | H2ExpectedOutputa7.txt |
 
 
 
