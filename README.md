@@ -8,6 +8,10 @@ some number of occurrences of integers in the range of 1 to 1000. The objective 
 program requires the reading of an input file which contains commands and data to build,
 search, modify, and print a skip list containing integers.
 
+### SkipList Concept Animation
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Skip_list_add_element-en.gif/800px-Skip_list_add_element-en.gif "Inserting to linked list")
+
 ## 2. Requirements
 
 Program will read the input file formatted as follows. The input file will contain at least one command
