@@ -81,8 +81,6 @@ sequence of random numbers, therebey streamlining troubleshooting and testing.
 
 #### Insert
 
----
-
 The insert command uses the single character `i` as the command token. The command token
 will be followed by a single space, then a single integer. This integer will then be inserted
 into the skip list. Note that a skip list requires that data be inserted into the skip list in
@@ -112,9 +110,9 @@ prevent duplicate entries in the skip list.)
 
 *Outputs* - N/A
 
-#### Delete
-
 ---
+
+#### Delete
 
 The delete command uses the single character `d` as the command token. The command
 token will be followed by a single integer. In order to successfully delete an entry from the
@@ -132,10 +130,9 @@ level(s) that the integer had been promoted to upon insertion.
 * (Failure) "xx integer not found - delete not successful", where xx is the integer being deleted
 was not found
 
+---
 
 #### Search
-
----
 
 The search command uses the single character `s` as the command token. The command
 token will be followed by a single space, then the integer that is to be searched
@@ -156,9 +153,9 @@ output.
 * (Success) "xx found", where xx is the integer being searched for
 * (Failure) "xx NOT FOUND", where xx is the integer being searched for and was not found
 
-#### Print
-
 ---
+
+#### Print
 
 The print command uses the single character `p` as the command token. This command will
 invoke the *printAll* function described in detail below.
